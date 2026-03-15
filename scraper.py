@@ -177,6 +177,77 @@ def get_paddy_power_overround(odds_data: dict) -> tuple[float, dict]:
     return overround, pp_odds
 
 
+async def search_oddschecker(query: str) -> str | None:
+    """Search Oddschecker for an event and return the first result URL, or None."""
+    try:
+        from playwright.async_api import async_playwright
+    except ImportError:
+        logger.error("Playwright not installed")
+        return None
+
+    try:
+        from urllib.parse import quote_plus
+
+        search_url = f"https://www.oddschecker.com/search?q={quote_plus(query)}"
+        logger.info(f"Searching Oddschecker: {search_url}")
+
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            ctx = await browser.new_context(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            )
+            page = await ctx.new_page()
+            await page.goto(search_url, wait_until="domcontentloaded", timeout=20000)
+            await page.wait_for_timeout(3000)
+
+            # Try to find the first search result link
+            result_url = await page.evaluate("""() => {
+                // Look for result links in common search result containers
+                const selectors = [
+                    'a[href*="/politics/"]',
+                    'a[href*="/entertainment/"]',
+                    'a[href*="/specials/"]',
+                    '.search-result a',
+                    '.result a',
+                    '[class*="search"] a[href*="oddschecker.com"]',
+                    '[class*="Search"] a',
+                    '[class*="result"] a',
+                ];
+                for (const sel of selectors) {
+                    const el = document.querySelector(sel);
+                    if (el && el.href && !el.href.includes('/search')) {
+                        return el.href;
+                    }
+                }
+                // Fallback: any link that looks like an event page
+                const allLinks = document.querySelectorAll('a[href]');
+                for (const a of allLinks) {
+                    const h = a.href;
+                    if (h.includes('oddschecker.com/') &&
+                        !h.includes('/search') &&
+                        !h.includes('/help') &&
+                        !h.includes('/login') &&
+                        !h.includes('/register') &&
+                        h.split('/').length > 4) {
+                        return h;
+                    }
+                }
+                return null;
+            }""")
+
+            await browser.close()
+
+            if result_url:
+                logger.info(f"Oddschecker search found: {result_url}")
+            else:
+                logger.warning(f"No Oddschecker results for query: {query}")
+            return result_url
+
+    except Exception as e:
+        logger.error(f"Oddschecker search failed: {e}")
+        return None
+
+
 def scrape_paddy_power_direct(market_url: str) -> dict | None:
     """Direct scrape of Paddy Power odds using Playwright.
 

@@ -11,7 +11,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from scraper import get_top_parsed_markets, scrape_oddschecker_odds, get_paddy_power_overround
+from scraper import (
+    get_top_parsed_markets, scrape_oddschecker_odds, get_paddy_power_overround,
+    search_oddschecker,
+)
 from market_selector import select_for_pillar1, select_for_pillar2
 from screenshotter import (
     build_pillar1_carousel, build_pillar2_carousel, build_pillar3_carousel,
@@ -66,9 +69,42 @@ async def run_pillar1():
 
         logger.info(f"Selected market: {market['title']}")
 
-        # Try scraping bookie odds — fall back to estimated overround
+        # Try scraping live bookie odds — fall back to estimated overround
         bookie_name = "Paddy Power"
         bookie_overround = 8.5  # Default estimate if scraping fails
+
+        try:
+            import re as _re
+            # Clean the market title into a search query
+            search_query = market["title"]
+            search_query = _re.sub(r"\b(Will|will|Does|does|Is|is|the|The)\b", "", search_query)
+            search_query = _re.sub(r"[?!.,;:'\"()]", "", search_query)
+            search_query = _re.sub(r"\s+", " ", search_query).strip()
+            logger.info(f"Searching Oddschecker for: '{search_query}'")
+
+            oc_url = await search_oddschecker(search_query)
+            if oc_url:
+                logger.info(f"Found Oddschecker URL: {oc_url}")
+                odds_data = await scrape_oddschecker_odds(oc_url)
+                if odds_data:
+                    overround_pct, pp_odds = get_paddy_power_overround(odds_data)
+                    if overround_pct > 100.0:
+                        bookie_overround = round(overround_pct - 100.0, 2)
+                        logger.info(
+                            f"Live overround from Oddschecker: {bookie_overround}% "
+                            f"({len(pp_odds)} outcomes)"
+                        )
+                    else:
+                        logger.warning(
+                            f"Oddschecker overround looks invalid ({overround_pct}%), "
+                            f"using default {bookie_overround}%"
+                        )
+                else:
+                    logger.warning("Oddschecker returned no odds data, using default overround")
+            else:
+                logger.warning("No Oddschecker match found, using default overround")
+        except Exception as e:
+            logger.warning(f"Oddschecker scraping failed ({e}), using default {bookie_overround}%")
 
         # Generate commentary
         prob = int(market["prices"][0] * 100) if market.get("prices") else 50

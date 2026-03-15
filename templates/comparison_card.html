@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1920px;
+    background: #0d0d0d;
+    font-family: 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #00c16e 0%, #00c16e 40%, transparent 100%);
+  }
+  .title {
+    font-size: 44px;
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .subtitle {
+    font-size: 28px;
+    color: #888888;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  /* Bet example section */
+  .bet-example {
+    width: 920px;
+    margin-bottom: 45px;
+  }
+  .bet-scenario {
+    font-size: 28px;
+    color: #aaaaaa;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  .bet-scenario strong {
+    color: #ffffff;
+  }
+  .returns-row {
+    display: flex;
+    gap: 20px;
+  }
+  .return-box {
+    flex: 1;
+    border-radius: 16px;
+    padding: 35px 25px;
+    text-align: center;
+  }
+  .return-bookie {
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+  }
+  .return-poly {
+    background: rgba(0, 193, 110, 0.1);
+    border: 1px solid rgba(0, 193, 110, 0.3);
+  }
+  .return-platform {
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .return-bookie .return-platform { color: #ff6666; }
+  .return-poly .return-platform { color: #00c16e; }
+  .return-amount {
+    font-size: 80px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .return-bookie .return-amount { color: #ff4444; }
+  .return-poly .return-amount { color: #00c16e; }
+  .return-label {
+    font-size: 22px;
+    color: #888888;
+    margin-top: 8px;
+  }
+  .return-lost {
+    font-size: 24px;
+    color: #ff6666;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+  .return-saved {
+    font-size: 24px;
+    color: #00c16e;
+    margin-top: 12px;
+    font-weight: 600;
+  }
+  /* Comparison table */
+  .comparison-table {
+    width: 920px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+  }
+  .table-header {
+    display: flex;
+  }
+  .header-cell {
+    flex: 1;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  .header-bookie {
+    background: rgba(220, 38, 38, 0.15);
+    color: #ff4444;
+  }
+  .header-poly {
+    background: rgba(0, 193, 110, 0.15);
+    color: #00c16e;
+  }
+  .header-label {
+    background: #151515;
+    color: #666666;
+    flex: 0 0 240px;
+  }
+  .row {
+    display: flex;
+    border-top: 1px solid #1e1e1e;
+  }
+  .row:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .label-cell {
+    flex: 0 0 240px;
+    padding: 26px 25px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #999999;
+    display: flex;
+    align-items: center;
+    background: #111111;
+    border-right: 1px solid #1e1e1e;
+  }
+  .value-cell {
+    flex: 1;
+    padding: 26px 15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .value-bookie {
+    color: #ff6666;
+    background: rgba(220, 38, 38, 0.05);
+  }
+  .value-poly {
+    color: #00c16e;
+    background: rgba(0, 193, 110, 0.05);
+  }
+  .x-mark { color: #ff4444; font-size: 28px; }
+  .check-mark { color: #00c16e; font-size: 28px; }
+  .watermark {
+    position: absolute;
+    bottom: 50px;
+    left: 60px;
+    font-size: 26px;
+    color: #00c16e;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+  .slide-number {
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+    font-size: 24px;
+    color: #555555;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+  <div class="title">You bet &euro;10. You win. Now what?</div>
+  <div class="subtitle">Same bet. Same outcome. Different payout.</div>
+
+  <div class="bet-example">
+    <div class="bet-scenario">You bet <strong>&euro;10</strong> on <strong>{{MARKET_SHORT}}</strong> and win</div>
+    <div class="returns-row">
+      <div class="return-box return-bookie">
+        <div class="return-platform">{{BOOKIE_NAME}}</div>
+        <div class="return-amount">&euro;{{BOOKIE_RETURN}}</div>
+        <div class="return-label">back in your pocket</div>
+        <div class="return-lost">&euro;{{BOOKIE_LOST}} lost to fees</div>
+      </div>
+      <div class="return-box return-poly">
+        <div class="return-platform">Polymarket</div>
+        <div class="return-amount">&euro;{{POLY_RETURN}}</div>
+        <div class="return-label">back in your pocket</div>
+        <div class="return-saved">&euro;{{POLY_EXTRA}} more than the bookie</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comparison-table">
+    <div class="table-header">
+      <div class="header-cell header-label"></div>
+      <div class="header-cell header-bookie">{{BOOKIE_NAME}}</div>
+      <div class="header-cell header-poly">Polymarket</div>
+    </div>
+    <div class="row">
+      <div class="label-cell">Bookie's cut</div>
+      <div class="value-cell value-bookie"><span class="x-mark">&#10007;</span> {{BOOKIE_OVERROUND}}%</div>
+      <div class="value-cell value-poly"><span class="check-mark">&#10003;</span> 0%</div>
+    </div>
+    <div class="row">
+      <div class="label-cell">Who sets odds</div>
+      <div class="value-cell value-bookie"><span class="x-mark">&#10007;</span> The bookie</div>
+      <div class="value-cell value-poly"><span class="check-mark">&#10003;</span> The crowd</div>
+    </div>
+    <div class="row">
+      <div class="label-cell">Cash out</div>
+      <div class="value-cell value-bookie"><span class="x-mark">&#10007;</span> Their price</div>
+      <div class="value-cell value-poly"><span class="check-mark">&#10003;</span> Market price</div>
+    </div>
+    <div class="row">
+      <div class="label-cell">Ban winners</div>
+      <div class="value-cell value-bookie"><span class="x-mark">&#10007;</span> Yes</div>
+      <div class="value-cell value-poly"><span class="check-mark">&#10003;</span> Never</div>
+    </div>
+  </div>
+  <div class="watermark">@predictireland</div>
+  <div class="slide-number">{{SLIDE_NUM}} / {{TOTAL_SLIDES}}</div>
+</body>
+</html>

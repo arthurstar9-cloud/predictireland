@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1920px;
+    background: #0d0d0d;
+    font-family: 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    position: relative;
+    padding: 0 80px;
+  }
+  .accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #00c16e 0%, #00c16e 40%, transparent 100%);
+  }
+  .left-border {
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 500px;
+    background: linear-gradient(180deg, transparent, #00c16e 20%, #00c16e 80%, transparent);
+    border-radius: 3px;
+  }
+  .content {
+    padding-left: 40px;
+    max-width: 860px;
+  }
+  .step-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #00c16e;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+  }
+  .headline {
+    font-size: 58px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 40px;
+  }
+  .body-text {
+    font-size: 34px;
+    color: #bbbbbb;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .source {
+    position: absolute;
+    bottom: 100px;
+    right: 60px;
+    font-size: 18px;
+    color: #444444;
+    text-align: right;
+  }
+  .watermark {
+    position: absolute;
+    bottom: 50px;
+    left: 60px;
+    font-size: 26px;
+    color: #00c16e;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+  .slide-number {
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+    font-size: 24px;
+    color: #555555;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+  <div class="left-border"></div>
+  <div class="content">
+    <div class="step-number">{{STEP_LABEL}}</div>
+    <h1 class="headline">{{HEADLINE}}</h1>
+    <p class="body-text">{{BODY}}</p>
+  </div>
+  <div class="source">{{SOURCE}}</div>
+  <div class="watermark">@predictireland</div>
+  <div class="slide-number">{{SLIDE_NUM}} / {{TOTAL_SLIDES}}</div>
+</body>
+</html>

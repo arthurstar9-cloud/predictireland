@@ -1,0 +1,194 @@
+[
+  {
+    "id": "what-is-prediction-market",
+    "title": "What is a prediction market?",
+    "hook": "Betting on the future  - without a bookie",
+    "slides": [
+      {
+        "headline": "A prediction market lets you buy shares in outcomes",
+        "body": "Think: 'Will Trump win in 2028?' You buy YES at 40c. If he wins, you get $1. If he loses, you lose 40c. That's it."
+      },
+      {
+        "headline": "The price IS the probability",
+        "body": "If YES shares trade at 73c, the market thinks there's a 73% chance it happens. Thousands of traders set this price  - not one bookie."
+      },
+      {
+        "headline": "No overround. No bookie margin.",
+        "body": "Paddy Power takes 5-15% before you even start. Prediction markets? The odds add up to 100%. You get the fair price."
+      },
+      {
+        "headline": "You can trade out any time",
+        "body": "Bought YES at 30c and it's now 70c? Sell your shares and pocket the profit. No need to wait for the event to finish."
+      }
+    ],
+    "caption_template": "Your bookie doesn't want you to know about this.\n\nPrediction markets let you trade on real-world events  - elections, economics, sport  - at fair odds with zero margin.\n\nLink in bio to start trading \ud83d\udc47"
+  },
+  {
+    "id": "how-polymarket-works",
+    "title": "How Polymarket actually works",
+    "hook": "A step-by-step walkthrough",
+    "slides": [
+      {
+        "headline": "Step 1: Find a market",
+        "body": "Browse thousands of markets  - politics, crypto, sport, culture. Each one is a Yes/No question about a future event."
+      },
+      {
+        "headline": "Step 2: Buy shares",
+        "body": "YES shares pay $1 if the event happens. NO shares pay $1 if it doesn't. The price you pay = the implied probability."
+      },
+      {
+        "headline": "Step 3: Watch or trade",
+        "body": "Hold until the event resolves, or sell your shares early if the price moves in your favour. It's like a stock market for events."
+      },
+      {
+        "headline": "Step 4: Get paid",
+        "body": "When the event resolves, winning shares pay out $1 each. Losers go to $0. Funds go straight to your wallet."
+      }
+    ],
+    "caption_template": "Polymarket in 60 seconds.\n\nNo bookie. No overround. Just you vs the market.\n\nLink in bio to try it yourself \ud83d\udc47"
+  },
+  {
+    "id": "prediction-markets-beat-polls",
+    "title": "Why prediction markets beat polls",
+    "hook": "Polls ask opinions. Markets ask for money.",
+    "slides": [
+      {
+        "headline": "Polls are free to answer wrong",
+        "body": "When someone fills out a poll, they lose nothing by lying, guessing, or virtue signalling. There's no cost to being wrong."
+      },
+      {
+        "headline": "Markets make you put skin in the game",
+        "body": "When you buy shares at 60c, you're risking real money on your belief. That changes how carefully you think."
+      },
+      {
+        "headline": "The track record speaks for itself",
+        "body": "Prediction markets called Trump 2024 months before polls caught up. They spotted Brexit. They nailed COVID timelines."
+      },
+      {
+        "headline": "The wisdom of crowds is real",
+        "body": "Thousands of traders with different information sources, all competing to be right. The result? The best forecast available anywhere."
+      }
+    ],
+    "caption_template": "Polls said Hillary would win. Markets said it was a coin flip.\n\nPrediction markets have been embarrassing pollsters for years. Here's why.\n\nLink in bio to see what the market thinks right now \ud83d\udc47"
+  },
+  {
+    "id": "fund-polymarket-from-ireland",
+    "title": "How to fund Polymarket from Ireland",
+    "hook": "Yes, it works here. Here's how.",
+    "slides": [
+      {
+        "headline": "Step 1: Get a crypto wallet",
+        "body": "Download MetaMask or Coinbase Wallet. It takes 2 minutes. This is your gateway to Polymarket."
+      },
+      {
+        "headline": "Step 2: Buy USDC",
+        "body": "Use Coinbase, Revolut, or Binance to buy USDC (a stablecoin pegged 1:1 to the US dollar). Irish accounts work fine."
+      },
+      {
+        "headline": "Step 3: Deposit to Polymarket",
+        "body": "Connect your wallet to Polymarket and deposit USDC. You can also deposit directly with a card on Polymarket's site."
+      },
+      {
+        "headline": "Step 4: Start trading",
+        "body": "You're in. Browse markets, buy shares, and start making money from your opinions. Withdrawals go back to your wallet."
+      }
+    ],
+    "caption_template": "Every second DM I get: 'does this work in Ireland?'\n\nYes. Here's how to get set up in 5 minutes.\n\nLink in bio to sign up \ud83d\udc47"
+  },
+  {
+    "id": "pnl-reveal",
+    "title": "I called [X event] at 30% \u2014 here's what I made",
+    "hook": "Receipts. Not predictions.",
+    "slides": [
+      {
+        "headline": "The market: {market_title}",
+        "body": "When I bought in, the market had this at {entry_price}c. Most people thought it wouldn't happen."
+      },
+      {
+        "headline": "I bought {shares} shares at {entry_price}c",
+        "body": "Total cost: ${cost}. If I was right, each share would pay out $1. If wrong, I'd lose everything."
+      },
+      {
+        "headline": "The event resolved YES",
+        "body": "Payout: ${payout}. Profit: ${profit}. That's a {return_pct}% return."
+      },
+      {
+        "headline": "The same bet at Paddy Power?",
+        "body": "They weren't even offering this market. And if they were, the margin would've eaten half your edge."
+      }
+    ],
+    "caption_template": "Bought at {entry_price}c. Paid out $1.\n\nThat's a {return_pct}% return on {market_title}.\n\nLink in bio to find your next trade \ud83d\udc47"
+  },
+  {
+    "id": "one-dollar-rule",
+    "title": "The \u20ac1 rule \u2014 how prediction market payouts work",
+    "hook": "Every share pays exactly $1. Or $0.",
+    "slides": [
+      {
+        "headline": "The only rule you need to know",
+        "body": "Every YES share pays $1 if the event happens. Every NO share pays $1 if it doesn't. That's the entire system."
+      },
+      {
+        "headline": "The price = the probability",
+        "body": "If YES trades at 73c, the market says 73% chance. Buy at 73c, win $1 = 27c profit. Or buy NO at 27c and win $1 if it doesn't happen."
+      },
+      {
+        "headline": "YES + NO always = $1",
+        "body": "That means 0% overround. No bookie margin. The full dollar goes to whoever is right."
+      },
+      {
+        "headline": "You can sell early",
+        "body": "Bought YES at 30c and it's now 70c? Sell and pocket 40c profit without waiting for the event. It's a market, not a bet slip."
+      }
+    ],
+    "caption_template": "The maths behind Polymarket is embarrassingly simple.\n\nBuy at 30c. Win = $1. Lose = $0. No bookie cut.\n\nLink in bio to try it \ud83d\udc47"
+  },
+  {
+    "id": "crowd-smarter-than-bookie",
+    "title": "Why the crowd is smarter than your bookie",
+    "hook": "10,000 traders vs 1 odds compiler",
+    "slides": [
+      {
+        "headline": "Your bookie employs one team to set odds",
+        "body": "A small group of traders and algorithms decide what price you get. Their job is to make the bookie money, not to be accurate."
+      },
+      {
+        "headline": "Polymarket has thousands of independent traders",
+        "body": "Each one brings different information  - insiders, analysts, data nerds, domain experts. The price reflects ALL of their knowledge."
+      },
+      {
+        "headline": "Bookies add margin. Markets don't.",
+        "body": "Paddy Power's overround means their odds are deliberately wrong. They shade prices to guarantee profit regardless of the outcome."
+      },
+      {
+        "headline": "The result? Markets are more accurate.",
+        "body": "When prediction markets say 70%, it happens ~70% of the time. Bookies can't say the same  - because accuracy was never their goal."
+      }
+    ],
+    "caption_template": "Paddy Power employs 20 people to set your odds.\n\nPolymarket has 10,000+ traders competing to be right.\n\nWho do you trust?\n\nLink in bio \ud83d\udc47"
+  },
+  {
+    "id": "polymarket-vs-paddy-power",
+    "title": "Polymarket vs Paddy Power \u2014 full breakdown",
+    "hook": "Side by side. No contest.",
+    "slides": [
+      {
+        "headline": "Fees: Paddy Power takes 5-15%",
+        "body": "The overround is built into every market. You're paying a hidden tax on every single bet. Polymarket? 0% overround."
+      },
+      {
+        "headline": "Cashout: Paddy Power decides your price",
+        "body": "Their 'cash out' feature gives you whatever they feel like. On Polymarket, you sell on the open market at the real price."
+      },
+      {
+        "headline": "Markets: Paddy Power picks what you can bet on",
+        "body": "Polymarket has thousands of markets  - elections, AI, economics, crypto, geopolitics. If people care about it, there's probably a market."
+      },
+      {
+        "headline": "Transparency: Paddy Power is a black box",
+        "body": "Polymarket runs on blockchain. Every trade is public. Every resolution is verifiable. Try getting that from a bookie."
+      }
+    ],
+    "caption_template": "Paddy Power vs Polymarket.\n\nOne takes 10% and bans you for winning. The other charges nothing and lets anyone trade.\n\nLink in bio to switch \ud83d\udc47"
+  }
+]

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1920px;
+    background: #0d0d0d;
+    font-family: 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #00c16e 0%, #00c16e 40%, transparent 100%);
+  }
+  .glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 193, 110, 0.1) 0%, transparent 70%);
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .content {
+    text-align: center;
+    padding: 80px;
+  }
+  .flag {
+    width: 100px;
+    height: 66px;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: inline-flex;
+  }
+  .flag-stripe {
+    flex: 1;
+    height: 100%;
+  }
+  .flag-green { background: #169b62; }
+  .flag-white { background: #ffffff; }
+  .flag-orange { background: #ff883e; }
+  .headline {
+    font-size: 62px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 25px;
+  }
+  .headline .green {
+    color: #00c16e;
+  }
+  .handle {
+    font-size: 42px;
+    font-weight: 700;
+    color: #00c16e;
+    margin-bottom: 50px;
+  }
+  .tagline {
+    font-size: 32px;
+    color: #aaaaaa;
+    margin-bottom: 60px;
+    font-weight: 400;
+  }
+  .qr-container {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+  .qr-container img {
+    width: 280px;
+    height: 280px;
+    display: block;
+  }
+  .referral-link {
+    font-size: 22px;
+    color: #666666;
+    font-family: 'Courier New', monospace;
+    margin-top: 25px;
+    word-break: break-all;
+  }
+  .watermark {
+    position: absolute;
+    bottom: 50px;
+    left: 60px;
+    font-size: 26px;
+    color: #00c16e;
+    font-weight: 600;
+    opacity: 0.8;
+  }
+  .slide-number {
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+    font-size: 24px;
+    color: #555555;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="flag"><div class="flag-stripe flag-green"></div><div class="flag-stripe flag-white"></div><div class="flag-stripe flag-orange"></div></div>
+    <h1 class="headline">Trade this on <span class="green">Polymarket</span></h1>
+    <div class="handle">@predictireland</div>
+    <div class="tagline">Zero fees. Open to Ireland. Link in bio.</div>
+    <div class="qr-container">
+      <img src="{{QR_PATH}}" alt="QR Code">
+    </div>
+    <div class="referral-link">polymarket.com?via=arthur-cussen-0ebv</div>
+  </div>
+  <div class="watermark">@predictireland</div>
+  <div class="slide-number">{{SLIDE_NUM}} / {{TOTAL_SLIDES}}</div>
+</body>
+</html>
